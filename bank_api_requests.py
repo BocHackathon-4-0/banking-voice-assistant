@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 
 # # Payment Requests
@@ -122,6 +123,36 @@ def get_login_token():
     #     print(response.text)
 
     k = response.json()
-    return k["access_token"]    
+    access_token = k["access_token"]
+    return access_token    
 
-get_login_token()
+#get_login_token()
+
+# WORKING
+def get_account_details(account_num):
+
+    token = get_login_token()
+
+    url = base_url + "/v1/accounts/" + account_num
+
+    payload = {}
+
+    current_timestamp = int(time.time())
+    current_timestamp_string = str(current_timestamp)
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        'subscriptionId': 'Subid000001-1696675553738',
+        'originUserId': '50520222',
+        'journeyId': '1bffa972-dc7a-4cbf-94f0-bd212c595b35',
+        'timeStamp': current_timestamp_string,
+        'x-client-certificate': x_client_certificate,
+        'Cookie': 'TS013b36ab=0179594e117b8f1775af752203cbf7be34bc67f0873e88a4573d0574817de7a191be31f1640d731cb05782316a2ac4dacc6a6f4387cdb10c0cb6c58ce778a72c29d08bd044; de2a657d1673ca26a0e0abed5da67a83=9c1ce5ce174ef0e9f76b2c67b708705b'
+    }
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+    print(response.text)
+
+
+get_account_details("351092345676")
