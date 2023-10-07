@@ -19,4 +19,4 @@ div.stButton > button:first-child {
 </style>""", unsafe_allow_html=True)
 
 # Button to start the assistant
-btn = st.button("Let's Start!", on_click=clicked_button)
+btn = st.button("Let's Start!")
