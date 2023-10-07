@@ -112,17 +112,16 @@ def get_login_token():
     response = requests.request("POST", url, headers=headers, data=payload)
 
     # TODO - DELETE/COMMENT
-    if response.status_code == 200:
-        # Request was successful, print the response content
-        print("Response:")
-        print(response.json()) 
-    else:
-        # Request failed, print the error message
-        print(f"Request failed with status code {response.status_code}:")
-        print(response.text)
+    # if response.status_code == 200:
+    #     # Request was successful, print the response content
+    #     print("Response:")
+    #     print(response.json()) 
+    # else:
+    #     # Request failed, print the error message
+    #     print(f"Request failed with status code {response.status_code}:")
+    #     print(response.text)
 
-    k = json.loads(response.json())
-    login_token = k["access_token"]
-    print[login_token]
+    k = response.json()
+    print(k["access_token"])    
 
 get_login_token()
