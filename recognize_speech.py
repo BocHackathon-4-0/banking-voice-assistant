@@ -35,11 +35,12 @@ def get_voice():
 
 
 def read_text(text):
+
     # Initialize the text-to-speech engine
     engine = pyttsx3.init()
 
     # Text to be read aloud
-    text_to_read = text
+    text_to_read = replace_my_with_your(text)
 
     # Set properties
     # Female voice
@@ -70,15 +71,18 @@ def replace_my_with_your(text):
     # Replace 'my' with 'your'
     replaced_words = [word if word.lower() != 'my' else 'your' for word in words]
     
+    # Replace me with you
+    words_final = [word if word.lower() != 'me' else 'you' for word in replaced_words]
+
     # Join the words back into a sentence
-    replaced_text = ' '.join(replaced_words)
+    replaced_text = ' '.join(words_final)
     
     return replaced_text
 
 # Call functions
 
-text = get_voice()
+# text = get_voice()
 
-voice_recorded = "You told me to " + text + ". Is everything correct? Shall I proceed with that request?"
-new_voice_recorded = replace_my_with_your(voice_recorded)
-read_text(new_voice_recorded)
+# voice_recorded = "You told me to " + text + ". Is everything correct? Shall I proceed with that request?"
+# new_voice_recorded = replace_my_with_your(voice_recorded)
+# read_text(new_voice_recorded)

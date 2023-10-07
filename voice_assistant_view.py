@@ -1,4 +1,11 @@
 import streamlit as st
+import recognize_speech
+import time
+
+def start():
+    text = recognize_speech.get_voice()
+    time.sleep(20)
+    tead_text = recognize_speech.read_text(text)
 
 # Web user interface
 style_title = "color: #FF00FF;"
@@ -19,4 +26,6 @@ div.stButton > button:first-child {
 </style>""", unsafe_allow_html=True)
 
 # Button to start the assistant
-btn = st.button("Let's Start!")
+btn = st.button("Let's Start! 	:studio_microphone:", on_click=start)
+
+
