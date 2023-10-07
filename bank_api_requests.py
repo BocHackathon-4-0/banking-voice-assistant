@@ -122,6 +122,6 @@ def get_login_token():
     #     print(response.text)
 
     k = response.json()
-    print(k["access_token"])    
+    return k["access_token"]    
 
 get_login_token()
