@@ -152,18 +152,32 @@ def get_account_details(account_num):
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    
-    print(response.json())
+
+    #print(response.json())
     return response.json()
 
 
-get_account_details("351092345676")
+#get_account_details("351092345676")
 
 
-# # Get accounts available balance
-# def get_accounts_available_balance(account_number):
+# Get accounts available balance
+def get_accounts_available_balance(account_number):
     
-#     # get all account details
-#     get_account_details(account_num)
+    # get all account details
+    account_details = get_account_details(account_number)
+
+    # get balance amount
+    available_account = account_details[0]
+    balance_available = available_account["balances"][0]
+    available_balance_account = balance_available["amount"]
+
+    print(available_balance_account)
+   
+    
+get_accounts_available_balance("351092345676")
+
+
+
+
 
 
