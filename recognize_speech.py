@@ -40,7 +40,7 @@ def read_text(text):
     engine = pyttsx3.init()
 
     # Text to be read aloud
-    text_to_read = replace_my_with_your(text)
+    text_to_read = text
 
     # Set properties
     # Female voice

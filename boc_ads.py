@@ -12,8 +12,5 @@ def get_random_ad():
 
     # Get a random index
     random_index = random.randint(0, 4)
-    return ads[random_index]
-
-# TODO - DELETE 
-x = get_random_ad()
-print(x)
+    random_ad = ads[random_index]
+    return random_ad
