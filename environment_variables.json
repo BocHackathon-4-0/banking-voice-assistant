@@ -1,5 +1,5 @@
 {
-	"id": "f7cdf01d-2e04-44f9-97bf-52203d5a03c4",
+	"id": "ad2d4e1b-0b8a-4237-adc9-b37d545ea9ca",
 	"name": "Hackathon 4 (PSD2)",
 	"values": [
 		{
@@ -28,25 +28,25 @@
 		},
 		{
 			"key": "client_id",
-			"value": "",
+			"value": "bd230620-1aa5-4509-858c-81e902d5c7e4",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "client_secret",
-			"value": "",
+			"value": "vD7bP6rU3uW5yT7dW7iU1wF5oX6yS5rC2mC8vF5nX0mW6sI2nG",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "redirect_uri",
-			"value": "https://localhost:8080",
+			"value": "http://localhost",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "access_token",
-			"value": "",
+			"value": "AAIkYmQyMzA2MjAtMWFhNS00NTA5LTg1OGMtODFlOTAyZDVjN2U0t2GLuUlNJ_x36X4Nn3aN6lbddXbQeZ-Pdicid3zmpFPoDl41n10s9HtVRgZOHc7mRTBXrasG6IZ1eannrEbGaF7gHMriQiS8mErrxuVZtv5rWNBJqk5rVu9HVgOLBoAb167rYtjj3xLP3ldAq0Wosw",
 			"type": "any",
 			"enabled": true
 		},
@@ -64,13 +64,13 @@
 		},
 		{
 			"key": "subscriptionId",
-			"value": "",
+			"value": "Subid000001-1696675553738",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "consent_access_token",
-			"value": "",
+			"value": "AAIkYmQyMzA2MjAtMWFhNS00NTA5LTg1OGMtODFlOTAyZDVjN2U0Ai93hOV5rM5OY9ZSD2fNuBL5vzvMx6nlvTG72lrDv25MG4tlrSNNi_efVN9LQ3JL-2mYIxri1gHruPVeCl5B-ded8N1_I6r7SBr7igDxFz8",
 			"type": "any",
 			"enabled": true
 		},
@@ -148,6 +148,6 @@
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2023-10-06T13:16:49.659Z",
-	"_postman_exported_using": "Postman/10.18.9"
+	"_postman_exported_at": "2023-10-07T11:36:38.658Z",
+	"_postman_exported_using": "Postman/10.18.11"
 }
