@@ -42,7 +42,6 @@ def read_text(text):
     text_to_read = text
 
     # Set properties
-
     # Female voice
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[1].id)
@@ -77,6 +76,9 @@ def replace_my_with_your(text):
     return replaced_text
 
 # Call functions
-voice_recorded = "You told me to " + get_voice() + ". Is everything correct? Shall I proceed with that request?"
+
+text = get_voice()
+
+voice_recorded = "You told me to " + text + ". Is everything correct? Shall I proceed with that request?"
 new_voice_recorded = replace_my_with_your(voice_recorded)
 read_text(new_voice_recorded)

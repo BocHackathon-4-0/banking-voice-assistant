@@ -152,7 +152,18 @@ def get_account_details(account_num):
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    print(response.text)
+    
+    print(response.json())
+    return response.json()
 
 
 get_account_details("351092345676")
+
+
+# # Get accounts available balance
+# def get_accounts_available_balance(account_number):
+    
+#     # get all account details
+#     get_account_details(account_num)
+
+
