@@ -38,7 +38,7 @@ def start():
                     payment_id = bank_api_requests.create_payment(bank_api_requests.sign_utility_payment(amount_mentioned))
                     payment_status = bank_api_requests.get_payment_details(payment_id)
                     ad_to_read = boc_ads.get_random_ad()                    
-                    payment_final_message = "You payment was completed successfully. The current status is " + payment_status + " by the organization" + ad_to_read
+                    payment_final_message = "You payment was completed successfully. The current status is " + payment_status + " by the organization. " + ad_to_read
                     recognize_speech.read_text(payment_final_message)
                     print(payment_id)
                     break
