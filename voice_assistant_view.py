@@ -29,6 +29,19 @@ def start():
                     text_to_read_final = "Your account type is " + details[0] + ", your account currency is " + details[1] + " and your account balance is " + details[2] + ". " + ad_to_read
                     recognize_speech.read_text(text_to_read_final)
                     break
+                # utility payment
+                if ("bill" in initial_command):
+                    amount_message = "Please specify the amount."
+                    recognize_speech.read_text(amount_message)
+                    amount_mentioned = recognize_speech.get_voice()
+                    print(amount_mentioned)                    
+                    payment_id = bank_api_requests.create_payment(bank_api_requests.sign_utility_payment(amount_mentioned))
+                    payment_status = bank_api_requests.get_payment_details(payment_id)
+                    ad_to_read = boc_ads.get_random_ad()                    
+                    payment_final_message = "You payment was completed successfully. The current status is " + payment_status + " by the organization" + ad_to_read
+                    recognize_speech.read_text(payment_final_message)
+                    print(payment_id)
+                    break
                 else:
                     try_again_message = "I did not find what you are looking for. Let's try again!"
                     recognize_speech.read_text(try_again_message)

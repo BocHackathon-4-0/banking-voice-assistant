@@ -240,7 +240,7 @@ def sign_utility_payment(amount_to_pay):
 
 
 
-def create_payment(amount):
+def create_payment(response_sign):
 
     token = get_login_token()
     # Get the current timestamp in UTC
@@ -256,7 +256,7 @@ def create_payment(amount):
 
     url = "https://sandbox-apis.bankofcyprus.com/df-boc-org-sb/sb/psd2/v1/payments/initiate"
 
-    payload = sign_utility_payment(amount)
+    payload = response_sign
 
     headers = {
         'Content-Type': 'application/json',
@@ -307,7 +307,7 @@ def get_payment_details(payment_id):
 
 # PAYMENTS TESTS
 # correct order to call function
-sign_utility_payment(50)
-payment_id = create_payment(50)
-print(payment_id)
-get_payment_details(payment_id)
+# sign_utility_payment(50)
+# payment_id = create_payment(50)
+# print(payment_id)
+# get_payment_details(payment_id)
