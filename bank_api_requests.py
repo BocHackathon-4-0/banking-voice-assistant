@@ -245,6 +245,13 @@ sign_utility_payment(50)
 def create_payment(amount):
 
     token = get_login_token()
+    # Get the current timestamp in UTC
+    timestamp = datetime.utcnow()
+
+    # Format the timestamp as required
+    formatted_timestamp = timestamp.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+    print(formatted_timestamp)
 
     login_timestamp = int(time.time())
     login_timestamp_string = str(login_timestamp)
@@ -260,7 +267,8 @@ def create_payment(amount):
         'timeStamp': '1696739671',
         'lang': 'en',
         'x-client-certificate': x_client_certificate,
-        'loginTimeStamp': '2023-10-08T04:34:31.083Z',
+        #'loginTimeStamp': '2023-10-08T04:34:31.083Z',
+        'loginTimeStamp': formatted_timestamp,
         'customerDevice': 'a2a3284c-4a05-4407-bf23-265e5d96773b',
         'customerIP': '192.168.10.1',
         'customerSessionId': '4490ea3a-f7ed-4831-a9cc-97d69cc5fb40'
