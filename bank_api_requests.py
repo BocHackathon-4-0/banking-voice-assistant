@@ -153,16 +153,21 @@ def get_filtered_details(account_num):
 
     details_to_return.append(account_type)
 
-    maturity_date = details_content["maturityDate"]
+    currency_symbol = details_content["currency"]
+    
+    if (currency_symbol == "EUR") :
+        currency_name = "Euro"
+    else:
+        currency_name = "Dollars"
 
-    details_to_return.append(maturity_date)
+    details_to_return.append(currency_name)
 
     balance_available = details_content["balances"][0]
     available_account_balance = balance_available["amount"] 
 
-    details_to_return.append(available_account_balance)
+    details_to_return.append(str(available_account_balance))
 
-    return account_type, maturity_date
+    return details_to_return
 
 get_filtered_details("351092345676")
 
@@ -180,7 +185,7 @@ def get_accounts_available_balance(account_number):
     # get balance amount
     available_account = account_details[0]
     balance_available = available_account["balances"][0]
-    available_balance_account = balance_available["amount"]
+    available_balance_account = str(balance_available["amount"])
 
     print(available_balance_account)
     return available_balance_account
