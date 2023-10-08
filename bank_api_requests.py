@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+from datetime import datetime
 
 # Global Variables 
 json_file_env = "environment_variables.json"
@@ -194,7 +195,7 @@ def get_accounts_available_balance(account_number):
 # run only for this - the only account the user is linked
 # get_accounts_available_balance("351092345676")
 
-def sign_utility_payment(amount):
+def sign_utility_payment(amount_to_pay):
     
     token = get_login_token()
 
@@ -214,7 +215,7 @@ def sign_utility_payment(amount):
             "amountCheckDigit": "1"
         },
         "transactionAmount": {
-            "amount": amount,
+            "amount": amount_to_pay,
             "currency": "EUR",
             "currencyRate": "string"
         },
@@ -233,10 +234,40 @@ def sign_utility_payment(amount):
 
     response = requests.request("POST", url, headers=headers, data=payload)
 
-    print(response.text)
+    response_json = json.dumps(response.json())
+    print(response_json)
+    return response_json
 
 
 sign_utility_payment(50)
+
+
+def create_payment(amount):
+
+    token = get_login_token()
+
+    login_timestamp = int(time.time())
+    login_timestamp_string = str(login_timestamp)
+
+    payload = sign_utility_payment(amount)
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        'subscriptionId': subscription_id,
+        'originUserId': '50520222',
+        'journeyId': '3cbbf5fd-a872-4e41-9ff2-0b94781f685f',
+        'timeStamp': '1696739671',
+        'lang': 'en',
+        'x-client-certificate': x_client_certificate,
+        'loginTimeStamp': '2023-10-08T04:34:31.083Z',
+        'customerDevice': 'a2a3284c-4a05-4407-bf23-265e5d96773b',
+        'customerIP': '192.168.10.1',
+        'customerSessionId': '4490ea3a-f7ed-4831-a9cc-97d69cc5fb40'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+    print(response.text)    
 
 
 
