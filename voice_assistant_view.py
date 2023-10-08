@@ -5,18 +5,30 @@ import bank_api_requests
 import boc_ads
 
 def start():
-    initial_command = recognize_speech.get_voice()
-    time.sleep(5)
-    new_voice_recorded = recognize_speech.replace_my_with_your(initial_command)  
-    voice_recorded = "You told me to " + new_voice_recorded + ". Is everything correct? Shall I proceed with that request?"        
-    recognize_speech.read_text(voice_recorded)
+    while True:
+        welcome_message = "How can I help you?"
+        recognize_speech.read_text(welcome_message)
+        time.sleep(2)
+        initial_command = recognize_speech.get_voice()
+        time.sleep(5)
+        new_voice_recorded = recognize_speech.replace_my_with_your(initial_command)  
+        voice_recorded = "You told me to " + new_voice_recorded + ". Is everything correct? Shall I proceed with that request?"        
+        recognize_speech.read_text(voice_recorded)
 
-    next = recognize_speech.get_voice()
-    if ("yes" in next):        
-        balance = bank_api_requests.get_accounts_available_balance("351092345676")
-        ad_to_read = boc_ads.get_random_ad()
-        text_to_read_final = "Your account balance is " + str(balance) + ". " + ad_to_read
-        recognize_speech.read_text(text_to_read_final)
+        next = recognize_speech.get_voice()
+        if ("yes" or "proceed" in next): 
+            if ("balance" in initial_command):       
+                balance = bank_api_requests.get_accounts_available_balance("351092345676")
+                ad_to_read = boc_ads.get_random_ad()
+                text_to_read_final = "Your account balance is " + str(balance) + ". " + ad_to_read
+                recognize_speech.read_text(text_to_read_final)
+            if ("details" in initial_command):
+                details = bank_api_requests.get_filtered_details("351092345676")
+                ad_to_read = boc_ads.get_random_ad()
+                text_to_read_final = "Your account type is " + details[0] + ", your account maturity date is " + details[1] + " and your account balance is " + details[2] + ". " + ad_to_read
+                recognize_speech.read_text(text_to_read_final)
+        else:
+            continue
  
 # Web user interface
 style_title = "color: #FF00FF;"

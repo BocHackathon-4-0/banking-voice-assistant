@@ -141,7 +141,30 @@ def get_account_details(account_num):
 
 #get_account_details("351092345676")
 
+# Get filtered details
+def get_filtered_details(account_num):
 
+    details_json = get_account_details(account_num)
+    details_content = details_json[0]
+
+    details_to_return = []
+
+    account_type = details_content["accountType"]
+
+    details_to_return.append(account_type)
+
+    maturity_date = details_content["maturityDate"]
+
+    details_to_return.append(maturity_date)
+
+    balance_available = details_content["balances"][0]
+    available_account_balance = balance_available["amount"] 
+
+    details_to_return.append(available_account_balance)
+
+    return account_type, maturity_date
+
+get_filtered_details("351092345676")
 
 # Get the most important details about account
 #def get_important_account_details():
