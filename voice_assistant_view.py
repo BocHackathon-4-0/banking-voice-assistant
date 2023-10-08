@@ -60,7 +60,7 @@ def start():
  
 # Web user interface
 style_title = "color: #FF00FF;"
-st.markdown(f"<h1 style='text-align: center; color: white;'></i>Hi! I am <span style='{style_title}'>Payvia</span>!</h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='text-align: center; color: white;'></i>Hi! I am <span style='{style_title}'>PayVia</span>!</h1>", unsafe_allow_html=True)
 style_subtitle = "color: cyan;"
 st.markdown(f"<h2 style='text-align: center; color: white;'>Your <span style='{style_subtitle}'>Favourite</span> Personal Banking Assistant</h2>", unsafe_allow_html=True)
 
